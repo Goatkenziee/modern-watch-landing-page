@@ -9,13 +9,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-gray': '#222',
-        'custom-blue': '#0070f3',
+        'gray-900': '#111827',
+        'gray-800': '#1f2937',
+        'blue-600': '#2563eb',
+        'blue-700': '#1d4ed8',
       },
       backgroundImage: {
-        'hero-pattern': "url('/public/hero-watch.jpg')",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
   plugins: [],
-};
+}
