@@ -6,7 +6,8 @@ import Link from 'next/link';
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get('session_id');
+  // Ensure searchParams is not null before calling .get()
+  const sessionId = searchParams ? searchParams.get('session_id') : null;
   const [loading, setLoading] = useState(true);
   const [paymentStatus, setPaymentStatus] = useState('Verifying your payment...');
 
