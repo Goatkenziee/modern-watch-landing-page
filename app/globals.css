@@ -1,9 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global styles */
 
-body {
-  font-family: 'Inter', sans-serif;
+/* Basic reset and box-sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Add any other global styles here */
+/* Body styles */
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: #222; /* Corresponds to custom-gray */
+  color: white;
+  line-height: 1.6;
+}
+
+/* Ensure html and body take full height */
+html, body, #__next {
+  height: 100%;
+}
+
+/* Custom styles */
+.custom-gray {
+  background-color: #222;
+}
+
+.custom-blue {
+  background-color: #0070f3;
+}
+
+/* Hero section specific styles could go here if needed */
+.hero-section {
+  background-image: url('/public/hero-watch.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

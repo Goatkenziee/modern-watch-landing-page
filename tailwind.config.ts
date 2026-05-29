@@ -1,8 +1,5 @@
-import type {
-  Config
-} from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,22 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       colors: {
-        'custom-gray': '#282828',
-        'custom-gray-light': '#4a4a4a',
-        'custom-gold': '#daa520',
+        'custom-gray': '#222',
+        'custom-blue': '#0070f3',
       },
-      fontFamily: {
-        'modern-sans': ['"Inter", sans-serif'],
+      backgroundImage: {
+        'hero-pattern': "url('/public/hero-watch.jpg')",
       },
     },
   },
   plugins: [],
-}
-
-export default config
+};

@@ -1,106 +1,78 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 
-// Mock product data
-const products = [
+// Watch data (replace with actual data fetching if needed)
+const watches = [
   {
-    id: 'prod_1',
+    id: 1,
     name: 'Classic Chronograph',
-    price: 299.99,
+    description: 'Timeless elegance for the modern individual.',
+    price: 1200.00,
     imageUrl: '/watch1.jpg',
-    description: 'Timeless elegance with a sophisticated chronograph movement.',
   },
   {
-    id: 'prod_2',
-    name: 'Modern Minimalist',
-    price: 199.99,
+    id: 2,
+    name: 'Sporty Navigator',
+    description: 'Durable and stylish, perfect for adventures.',
+    price: 850.00,
     imageUrl: '/watch2.jpg',
-    description: 'Sleek design for the contemporary individual.',
   },
   {
-    id: 'prod_3',
-    name: 'Luxury Automatic',
-    price: 499.99,
+    id: 3,
+    name: 'Minimalist Dress Watch',
+    description: 'Sophistication in simplicity.',
+    price: 1500.00,
     imageUrl: '/watch3.jpg',
-    description: 'Precision engineering meets luxurious aesthetics.',
   },
 ];
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-custom-gray flex flex-col">
+    <main className="flex-grow">
       {/* Hero Section */}
-      <header className="relative w-full h-96 overflow-hidden">
-        <Image
-          src="/hero-watch.jpg"
-          alt="Hero Watch"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-5xl font-bold text-custom-gold mb-4 font-['Inter', sans-serif]">
-              Timeless Precision
-            </h1>
-            <p className="text-xl text-white mb-8">
-              Discover the art of timekeeping with our exquisite collection.
-            </p>
-            <Link
-              href="#products"
-              className="bg-custom-gold text-custom-gray-light font-semibold py-3 px-8 rounded-full hover:bg-yellow-400 transition duration-300"
-            >
-              Explore Watches
-            </Link>
-          </div>
+      <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center bg-no-repeat hero-section" 
+               style={{ backgroundImage: 'url(/hero-watch.jpg)' }}>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative z-10 px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">Discover Timeless Craftsmanship</h1>
+          <p className="text-xl md:text-2xl mb-8">Experience the art of watchmaking with our exquisite collection.</p>
+          <Link href="#watches" className="bg-custom-blue hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out text-lg">
+            Explore Our Collection
+          </Link>
         </div>
-      </header>
+      </section>
 
-      {/* Products Section */}
-      <main id="products" className="py-16 px-4 md:px-8 lg:px-16 bg-custom-gray-light">
-        <h2 className="text-4xl font-bold text-center text-custom-gold mb-12 font-['Inter', sans-serif]">
-          Our Collection
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-custom-gray rounded-lg shadow-lg overflow-hidden text-center p-6 transition transform hover:-translate-y-2 hover:shadow-xl duration-300"
-            >
-              <Image
-                src={product.imageUrl}
-                alt={product.name}
-                width={400}
-                height={300}
-                objectFit="cover"
-                className="rounded-md mb-4 mx-auto"
-              />
-              <h3 className="text-2xl font-semibold mb-2 text-custom-gold font-['Inter', sans-serif]">
-                {product.name}
-              </h3>
-              <p className="text-white text-sm mb-4 opacity-80">
-                {product.description}
-              </p>
-              <p className="text-2xl font-bold text-white mb-4">
-                ${product.price.toFixed(2)}
-              </p>
-              <Link
-                href={`/api/stripe-checkout?productId=${product.id}&productName=${encodeURIComponent(product.name)}&price=${product.price}`}
-                className="bg-custom-gold text-custom-gray-light font-semibold py-2 px-6 rounded-full hover:bg-yellow-400 transition duration-300"
-              >
-                Buy Now
-              </Link>
+      {/* Watches Section */}
+      <section id="watches" className="py-16 px-4 md:px-8 bg-custom-gray">
+        <h2 className="text-4xl font-bold text-center mb-12">Our Latest Timepieces</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+          {watches.map((watch) => (
+            <div key={watch.id} className="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl flex flex-col">
+              <div className="relative w-full h-64">
+                <Image 
+                  src={watch.imageUrl}
+                  alt={watch.name}
+                  layout="fill" 
+                  objectFit="cover"
+                  className="rounded-t-lg"
+                />
+              </div>
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-white">{watch.name}</h3>
+                  <p className="text-gray-300 mb-4">{watch.description}</p>
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <p className="text-xl font-semibold text-white">${watch.price.toFixed(2)}</p>
+                  <Link href={`/api/stripe-checkout?id=${watch.id}`}>
+                    <a className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 rounded-lg transition duration-300 ease-in-out">Buy Now</a>
+                  </Link>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="mt-auto bg-custom-gray-light text-center py-8">
-        <p className="text-white opacity-70">
-          © 2024 Modern Watches. All rights reserved.
-        </p>
-      </footer>
-    </div>
+      </section>
+    </main>
   );
 }
