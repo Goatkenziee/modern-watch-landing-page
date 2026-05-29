@@ -9,17 +9,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'gray-900': '#111827',
-        'gray-800': '#1f2937',
-        'blue-600': '#2563eb',
-        'blue-700': '#1d4ed8',
+        gray: {
+          900: '#1a202c',
+          800: '#2d3748',
+          700: '#4a5568',
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
   plugins: [],
-}
+};

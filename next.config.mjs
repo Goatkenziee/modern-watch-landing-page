@@ -2,8 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Removed invalid compilerOptions and experimental.appDir
-  // Next.js 14+ has appDir enabled by default.
+  images: {
+    domains: ['via.placeholder.com', 'localhost'], // Add any other domains you use for images
+  },
+  // Ensure App Router is enabled (default in Next.js 14+)
+  // pageExtensions: ['tsx', 'ts'], // Explicitly define page extensions if needed, but usually not required for App Router
 };
 
 export default nextConfig;
