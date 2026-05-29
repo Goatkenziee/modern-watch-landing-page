@@ -1,5 +1,3 @@
-/* app/page.tsx */
-
 "use client";
 
 import { useState } from 'react';
@@ -32,7 +30,8 @@ const watches = [
 export default function HomePage() {
   const [selectedWatch, setSelectedWatch] = useState(null);
 
-  const handlePurchase = (watch) => {
+  // Explicitly type 'watch' parameter as 'any' to resolve TS7006 error
+  const handlePurchase = (watch: any) => {
     setSelectedWatch(watch);
     // In a real app, you would redirect to a checkout page or initiate Stripe checkout
     console.log('Purchasing:', watch.name);

@@ -2,12 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  compilerOptions: {
-    styledComponents: true,
-  },
-  experimental: {
-    appDir: true,
-  },
+  // Removed invalid compilerOptions and experimental.appDir
+  // Next.js 14+ has appDir enabled by default.
 };
 
 export default nextConfig;
